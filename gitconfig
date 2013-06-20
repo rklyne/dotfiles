@@ -1,0 +1,12 @@
+[user]
+	email = github@rklyne.net
+    name = Ronan Klyne
+
+
+[core]
+    editor = vim
+
+[github]
+    user = rklyne
+
+
