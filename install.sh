@@ -1,6 +1,6 @@
-#!bash
+#!/bin/bash
 
-ln -s ~/.tmux.conf ./tmux.conf
-ln -s ~/.vimrc ./vimrc
+ln -s "${PWD}/tmux.conf" ~/.tmux.conf
+ln -s "${PWD}/vimrc" ~/.vimrc
 
 
