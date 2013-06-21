@@ -9,4 +9,7 @@ This repo is:
 * Perpetually a work in progress.
 * No warranty offered ;-)
 
+## Quick install (everything)
+
+> bash -c "`curl -L https://github.com/rklyne/dotfiles/raw/master/webinstall.sh`"
 
