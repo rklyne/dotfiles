@@ -1,5 +1,16 @@
+
+" execute pathogen#infect()
+" syntax on
+" filetype plugin indent on
+
+
 " Relative line numbers
-:set rnu
+if version >= 730 
+    :set rnu 
+else
+    :set number
+endif
+
 
 " Indentation
 :set autoindent
