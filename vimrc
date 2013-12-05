@@ -1,30 +1,31 @@
 
 " execute pathogen#infect()
-" syntax on
-" filetype plugin indent on
 
+filetype plugin indent on
+
+syntax on
 
 " Relative line numbers
-if version >= 730 
-    :set rnu 
-else
-    :set number
-endif
+try
+    set rnu 
+catch
+    set number
+endtry
 
 
 " Indentation
-:set autoindent
-:set tabstop=4
-:set shiftwidth=4
+set autoindent
+set tabstop=4
+set shiftwidth=4
 " Only with spaces
-:set expandtab
+set expandtab
 
 " Wrapping
 " Break at words
-:set linebreak
+set linebreak
 
 " Autocorrect my common typographical fuck-upws
 "                                            ^ loltypo :-)
-:iabbrev improt import
+iabbrev improt import
 
 
