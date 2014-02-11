@@ -1,0 +1,16 @@
+git://github.com/kongo2002/fsharp-vim.git
+git@github.com:guns/vim-clojure-static.git
+git://github.com/tpope/vim-dispatch.git
+git@github.com:tpope/vim-fireplace.git
+git://github.com/tpope/vim-fugitive.git
+git@github.com:Glench/Vim-Jinja2-Syntax.git
+git@github.com:plasticboy/vim-markdown.git
+git@github.com:jmcomets/vim-pony.git
+git@github.com:nablaa/vim-rainbow-parenthesis.git
+git@github.com:dgrnbrg/vim-redl.git
+git://github.com/tpope/vim-repeat.git
+git@github.com:guns/vim-sexp.git
+git://github.com/tpope/vim-surround.git
+git@github.com:tpope/vim-unimpaired.git
+git://github.com/tpope/vim-vinegar.git
+git@github.com:kien/rainbow_parentheses.vim.git
