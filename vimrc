@@ -11,13 +11,25 @@ endtry
 
 filetype plugin indent on
 
-:syntax on
+syntax on
+
+" searching in files made easier
+set ignorecase
+set smartcase
 
 " Rainbow parens
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" python-mode pep8 off.
+" au VimEnter * PymodeLintToggle
+
+" vim-sexp - disable 'specials' on closing bracket in insert mode
+let g:sexp_enable_insert_mode_mappings = 0
+
+
 
 " Relative line numbers
 try
@@ -38,6 +50,10 @@ set expandtab
 " Break at words
 set linebreak
 
+" Folding - off by default
+set foldlevel=99
+autocmd BufEnter *.md set foldlevel=99
+
 " Autocorrect my common typographical fuck-upws
 "                                            ^ loltypo :-)
 iabbrev improt import
@@ -49,5 +65,5 @@ nmap <C-c> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
 
-
+nnoremap <Space> :
 
