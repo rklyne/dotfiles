@@ -67,3 +67,9 @@ map <C-p> :r ~/.vimbuffer<CR>
 
 nnoremap <Space> :
 
+" netrw
+let g:netrw_list_hide= '.*\.swp$\|.*\.pyc'
+
+nnoremap <F5> :source ~/.vimrc <Enter>
+
+
