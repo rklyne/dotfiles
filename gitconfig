@@ -10,3 +10,5 @@
     user = rklyne
 
 
+[color]
+	ui = auto
