@@ -1,4 +1,7 @@
 
+" netrw
+let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
+
 " Load pathogen if it's there (provides my fsharp syntax at least)
 try
 " Pathogen
@@ -66,10 +69,11 @@ nmap <C-c> :.w! ~/.vimbuffer<CR>
 map <C-p> :r ~/.vimbuffer<CR>
 
 nnoremap <Space> :
+nnoremap <F5> :source ~/.vimrc <Enter>
+nnoremap <F3> :!grep -r -A2 -B2 "<C-R><C-W>" *<Enter>
+nnoremap <S-F3> :!grep -A2 -B2 "<C-R><C-W>" *<Enter>
 
 " netrw
-let g:netrw_list_hide= '.*\.swp$\|.*\.pyc'
-
-nnoremap <F5> :source ~/.vimrc <Enter>
+let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 
 
