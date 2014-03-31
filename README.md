@@ -10,6 +10,5 @@ This repo is:
 * No warranty offered ;-)
 
 ## Quick install (everything)
-
-      bash -c "`curl -L https://github.com/rklyne/dotfiles/raw/master/webinstall.sh`"
+    bash -c "`curl -L https://github.com/rklyne/dotfiles/raw/master/webinstall.sh`"
 
