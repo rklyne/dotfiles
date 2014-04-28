@@ -2,6 +2,9 @@
 " netrw
 let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 
+" projector happy colours
+colorscheme koehler
+
 " Load pathogen if it's there (provides my fsharp syntax at least)
 try
 " Pathogen
@@ -21,10 +24,16 @@ set ignorecase
 set smartcase
 
 " Rainbow parens
-au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+nnoremap <F10> :RainbowParenthesesToggle<Enter>
+inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
+
+" TagList
+nnoremap <F4> :Tlist<Enter>
+inoremap <F4> <C-o>:Tlist<Enter>
 
 " python-mode pep8 off.
 " au VimEnter * PymodeLintToggle
@@ -75,5 +84,10 @@ nnoremap <S-F3> :!grep -A2 -B2 "<C-R><C-W>" *<Enter>
 
 " netrw
 let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
+
+" Powerline
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 
 
