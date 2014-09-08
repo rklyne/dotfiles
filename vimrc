@@ -5,6 +5,12 @@ set nocompatible
 " netrw
 let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 
+" Some detections to prevent errors/warnings on shared boxes
+let g:pathogen_disabled = []
+if !executable('ctags')
+    let g:pathogen_disabled += ['taglist.vim',]
+endif
+
 " Load pathogen if it's there (provides my fsharp syntax at least)
 try
 " Pathogen
@@ -16,6 +22,12 @@ catch
 endtry
 
 """"""""""""""""""""""
+" Fix distro defaults
+augroup redhat
+    autocmd!
+augroup END
+
+""""""""""""""""""""""
 " Appearance
 
 syntax enable
@@ -25,10 +37,14 @@ let g:solarized_termtrans = 1
 " projector happy colours
 " colorscheme koehler
 colorscheme solarized
+set background=dark
 
 filetype plugin indent on
 
 syntax on
+
+colorscheme solarized
+set background=dark
 
 " Rainbow parens
 au Syntax * RainbowParenthesesActivate
