@@ -55,6 +55,13 @@ au Syntax * RainbowParenthesesLoadBraces
 nnoremap <F10> :RainbowParenthesesToggle<Enter>
 inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
 
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_always_populate_loc_list = 1
+
 """""""""""""""""""""""""""""""""
 " Little informational bits
 " Status line
@@ -78,6 +85,18 @@ if v:version < 704
 endif
 " Scroll when 2 lines from screen edge
 set scrolloff=2
+
+""""""""""""""""""""""""""""""""""
+" Formatting
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 """""""""""""""""""""""""""""""""""
 " Writing text
@@ -173,6 +192,7 @@ let g:sexp_enable_insert_mode_mappings = 0
 " Autocorrect my common typographical fuck-upws
 "                                            ^ loltypo :-)
 iabbrev improt import
+iabbrev fmor from
 
 " Cross-vims copy/paste
 " copy to buffer

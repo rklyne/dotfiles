@@ -1,0 +1,17 @@
+
+# Allow commented lines at the shell prompt
+setopt interactivecomments
+setopt appendhistory
+unsetopt sharehistory
+
+function charge {
+    echo `~/scripts/batcharge.py`
+}
+
+#
+# export RPROMPT="$(charge)"
+
+export PS1="%{$fg_bold[blue]%}\$(git_prompt_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c % ${ret_status} %{$reset_color%}"
+
+. ~/scripts/dockerinit.sh
+
