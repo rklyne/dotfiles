@@ -1,4 +1,12 @@
 
+# solarized
+# mac friendly
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+# normal people
+# ???
+
+alias fuck='eval $(thefuck $(fc -ln -1))'
+
 # Allow commented lines at the shell prompt
 setopt interactivecomments
 setopt appendhistory

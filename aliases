@@ -1,0 +1,18 @@
+alias top="htop "
+alias ls='ls -G'
+alias ll='ls -l'
+alias grpe='grep'
+alias .....="cd ../../../.."
+alias ....="cd ../../.."
+alias ...="cd ../.."
+alias ..="cd .."
+
+alias gs='git status'
+alias gcm='git commit -m'
+alias gcam='git commit -am'
+alias gco='git checkout'
+alias gcom='git checkout master'
+alias gcod='git checkout develop'
+alias gcob='git checkout -b'
+
+
