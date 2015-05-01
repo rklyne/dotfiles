@@ -19,7 +19,7 @@ function charge {
 #
 # export RPROMPT="$(charge)"
 
-export PS1="[$(whoami)@$(hostname)] %{$fg_bold[blue]%}\$(git_prompt_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c % ${ret_status} %{$reset_color%}"
+export PS1="[$(whoami)@$(hostname -s|cut -c 1-18)] %{$fg_bold[blue]%}\$(git_prompt_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c % ${ret_status} %{$reset_color%}"
 
 DOCKER_SCRIPT="~/scripts/dockerinit.sh"
 [[ -f ${DOCKER_SCRIPT} ]] && . ${DOCKER_SCRIPT}
