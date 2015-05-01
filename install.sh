@@ -10,6 +10,9 @@ makelink () {
     [[ -e "${TARGET}" ]] || ln -s "${WD}/${1}" "${TARGET}"
 }
 
+# oh my zsh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
 makelink "tmux.conf"
 makelink "vim"
 makelink "vimrc"
