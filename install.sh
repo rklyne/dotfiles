@@ -28,4 +28,7 @@ pip install --user git+git://github.com/Lokaltog/powerline
 
 (cd ~/.vim && ./install_bundles.sh)
 
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 

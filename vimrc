@@ -34,6 +34,7 @@ set t_Co=16
 syntax enable
 set background=dark
 let g:solarized_termtrans = 1
+set listchars=eol:↩,tab:▶▹,nbsp:␣,extends:…,trail:•
 
 " projector happy colours
 " colorscheme koehler
@@ -213,5 +214,9 @@ let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 "python from powerline.vim import setup as powerline_setup
 "python powerline_setup()
 "python del powerline_setup
+
+" Write a readonly file:
+cmap w!! w !sudo tee % >/dev/null
+
 
 
