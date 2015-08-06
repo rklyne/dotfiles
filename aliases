@@ -14,5 +14,6 @@ alias gco='git checkout'
 alias gcom='git checkout master'
 alias gcod='git checkout develop'
 alias gcob='git checkout -b'
+alias gcamend='git commit --amend -m'
 
 
