@@ -1,4 +1,5 @@
-alias top="htop "
+# When htop available, use it by default
+[[ -x `which htop` ]] && alias top="htop "
 alias ls='ls -G'
 alias ll='ls -l'
 alias grpe='grep'
