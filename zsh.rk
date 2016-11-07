@@ -7,6 +7,8 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 alias fuck='eval $(thefuck $(fc -ln -1))'
 
+. `brew --prefix`/etc/profile.d/z.sh
+
 # Allow commented lines at the shell prompt
 setopt interactivecomments
 setopt appendhistory
