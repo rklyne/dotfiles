@@ -32,9 +32,9 @@ augroup END
 
 set t_Co=16
 syntax enable
-set background=dark
 let g:solarized_termtrans = 1
 set listchars=eol:↩,tab:▶▹,nbsp:␣,extends:…,trail:•
+:call togglebg#map("b") " <m-b>
 
 " projector happy colours
 " colorscheme koehler
@@ -46,7 +46,8 @@ filetype plugin indent on
 syntax on
 
 colorscheme solarized
-set background=dark
+" set background=dark
+set background=light
 
 " Rainbow parens
 au Syntax * RainbowParenthesesActivate
@@ -60,8 +61,12 @@ inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_quiet_messages = { "type": "style" }
+" let g:syntastic_quiet_messages = { "type": "style" }
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_checkers = ['flake8', 'pyflakes',]
+let g:syntastic_python_flake8_args = "--max-line-length=120"
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_open = 1
 
 """""""""""""""""""""""""""""""""
 " Little informational bits
@@ -206,6 +211,7 @@ nnoremap <Space> :
 nnoremap <F5> :source ~/.vimrc <Enter>
 nnoremap <F3> :!grep -r -A2 -B2 "<C-R><C-W>" *<Enter>
 nnoremap <S-F3> :!grep -A2 -B2 "<C-R><C-W>" *<Enter>
+nnoremap r :redraw!<Enter>
 
 " netrw
 let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
@@ -218,5 +224,11 @@ let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 " Write a readonly file:
 cmap w!! w !sudo tee % >/dev/null
 
+
+"""""""""""""""""""""""
+" Completion for Python
+
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#completions_command = "<C-/>"
 
 
