@@ -6,6 +6,7 @@
 [core]
     editor = vim
 	excludesfile = /Users/rk/.gitignore_global
+	precomposeunicode = true
 
 [github]
     user = rklyne
