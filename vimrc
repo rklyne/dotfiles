@@ -3,7 +3,7 @@
 set nocompatible
 
 " netrw
-let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
+set wildignore+=*.sw[a-z],*.pyc
 
 " Some detections to prevent errors/warnings on shared boxes
 let g:pathogen_disabled = []
@@ -212,9 +212,6 @@ nnoremap <F5> :source ~/.vimrc <Enter>
 nnoremap <F3> :!grep -r -A2 -B2 "<C-R><C-W>" *<Enter>
 nnoremap <S-F3> :!grep -A2 -B2 "<C-R><C-W>" *<Enter>
 nnoremap r :redraw!<Enter>
-
-" netrw
-let g:netrw_list_hide= '\(.*\.swp$\)\|\(.*\.pyc$\)'
 
 " Powerline
 "python from powerline.vim import setup as powerline_setup
