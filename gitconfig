@@ -16,3 +16,5 @@
 	ui = auto
 [push]
 	default = matching
+[merge]
+	conflictstyle = diff3
