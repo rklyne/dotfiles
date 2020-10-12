@@ -34,7 +34,8 @@ set t_Co=16
 syntax enable
 let g:solarized_termtrans = 1
 set listchars=eol:↩,tab:▶▹,nbsp:␣,extends:…,trail:•
-:call togglebg#map("b") " <m-b>
+" I never use this and always hit it by mistake
+" :call togglebg#map("b") " <m-b>
 
 " projector happy colours
 " colorscheme koehler
@@ -58,6 +59,24 @@ set background=light
 " inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
 let g:rainbow_active = 1
 
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
 " Syntastic config
 set laststatus=2
 set statusline+=%F
@@ -74,6 +93,14 @@ let g:syntastic_check_on_open = 1
 " TypeScript syntastic config
 " let g:tsuquyomi_disable_quickfix = 1
 " let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+
+let g:ycm_key_invoke_completion = '<C-.>'
+
+if !exists("g:ycm_semantic_triggers")
+   let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+set completeopt-=preview
 
 """""""""""""""""""""""""""""""""
 " Little informational bits
@@ -110,6 +137,8 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+au BufRead,BufNewFile *.ts  setlocal filetype=typescript
 
 """""""""""""""""""""""""""""""""""
 " Writing text
@@ -190,6 +219,9 @@ nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
 
+" Faster updates for gitgutter
+set updatetime=100
+
 """""""""""""""""""
 " Searching
 
@@ -244,4 +276,15 @@ cmap w!! w !sudo tee % >/dev/null
 autocmd FileType python setlocal completeopt-=preview
 let g:jedi#completions_command = "<C-/>"
 
+"""""""""""""""""""""
+" completion for other stuff
+let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = ['coc-tsserver']
 
+"""""""""""""""""
+" Node JS
+autocmd FileType javascript setlocal sw=2
+
+""""""""""""""""""""""
+" Tags
+let g:gutentags_ctags_exclude = ['*/deploy/*', '*/node_modules/*', 'scratch', '*/branches/*', '*/.tox/*', '*/releases/*']

@@ -19,6 +19,7 @@ alias gcam='git commit -am'
 alias gco='git checkout'
 alias gcom='git checkout master || git checkout main'
 alias gcod='git checkout develop'
+alias gcoi='git checkout integration'
 alias gcob='git checkout -b'
 alias gcamend='git commit --amend -m'
 alias gpcb='git push -u origin `git branch | grep "*" | cut -b3-`'
@@ -35,3 +36,6 @@ function fwip {
         git add -A; git commit -m "👍👍👍👍 REFACTOR - $1 - to squash";
 };
 
+alias mkdir='mkdir -p'
+
+alias zoom="open_command https://zoom.us/start/videomeeting"

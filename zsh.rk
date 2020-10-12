@@ -2,12 +2,15 @@
 # solarized
 # mac friendly
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+export BAT_THEME="Solarized (light)"
+
 # normal people
 # ???
 
 alias fuck='eval $(thefuck $(fc -ln -1))'
 
-(which brew > /dev/null) && . `brew --prefix`/etc/profile.d/z.sh
+. /etc/profile.d/z.sh
 
 # Allow commented lines at the shell prompt
 setopt interactivecomments
@@ -43,4 +46,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 . ~/.aliases
+
+# set PATH so it includes adr-tools if it exists
+if [ -d "$HOME/dev/adr-tools/src" ] ; then
+    PATH="$HOME/dev/adr-tools/src:$PATH"
+fi
+
+PATH="$HOME/.local/bin/:$PATH"
 
