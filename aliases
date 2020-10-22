@@ -1,7 +1,7 @@
 # When htop available, use it by default
 [[ -x `which htop` ]] && alias top="htop "
-alias ls='ls -G'
-alias ll='ls -l'
+alias ls='ls -G --color'
+alias ll='ls -l --color'
 alias grpe='grep'
 alias .....="cd ../../../.."
 alias ....="cd ../../.."
@@ -9,6 +9,9 @@ alias ...="cd ../.."
 alias ..="cd .."
 
 alias gs='git status'
+alias gd='git diff'
+alias gca='git comit -av'
+alias gc='git commit -v'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gco='git checkout'
