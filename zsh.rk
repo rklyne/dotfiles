@@ -7,7 +7,7 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 alias fuck='eval $(thefuck $(fc -ln -1))'
 
-. `brew --prefix`/etc/profile.d/z.sh
+(which brew > /dev/null) && . `brew --prefix`/etc/profile.d/z.sh
 
 # Allow commented lines at the shell prompt
 setopt interactivecomments
@@ -33,7 +33,7 @@ function git_stash_info {
 export PS1="[$(whoami)@$(hostname -s|cut -c 1-18)] %{$fg_bold[blue]%}\$(git_prompt_info)\$(git_stash_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c % ${ret_status} %{$reset_color%}"
 
 DOCKER_SCRIPT=/Users/rk/scripts/dockerinit.sh
-[[ -r ${DOCKER_SCRIPT} ]] && . ${DOCKER_SCRIPT} || echo "nodocker"
+[[ -r ${DOCKER_SCRIPT} ]] && . ${DOCKER_SCRIPT}
 
 . ~/.aliases
 
