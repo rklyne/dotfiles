@@ -1,0 +1,2 @@
+- build in `oh-my-zsh` install
+- more aliases + defaults from old g5 laptop
