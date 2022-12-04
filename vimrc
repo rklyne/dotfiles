@@ -50,14 +50,17 @@ colorscheme solarized
 set background=light
 
 " Rainbow parens
-au Syntax * RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-nnoremap <F10> :RainbowParenthesesToggle<Enter>
-inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
+" au Syntax * RainbowParenthesesActivate
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" nnoremap <F10> :RainbowParenthesesToggle<Enter>
+" inoremap <F10> <C-O>:RainbowParenthesesToggle<Enter>
+let g:rainbow_active = 1
 
 " Syntastic config
+set laststatus=2
+set statusline+=%F
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -67,6 +70,10 @@ let g:syntastic_python_checkers = ['flake8', 'pyflakes',]
 let g:syntastic_python_flake8_args = "--max-line-length=120"
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_open = 1
+
+" TypeScript syntastic config
+" let g:tsuquyomi_disable_quickfix = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 """""""""""""""""""""""""""""""""
 " Little informational bits
@@ -80,8 +87,8 @@ set cursorline
 try
     set rnu 
 catch
-    set number
 endtry
+set number
 
 " Indicate the cursor row
 highlight CursorLineNr term=bold ctermfg=7 gui=bold guifg=Yellow ctermbg=3
@@ -117,6 +124,12 @@ set sts=4
 set shiftwidth=4
 " Only with spaces
 set expandtab
+
+" TS/JS indentation
+autocmd FileType javascript,typescript set sw=2 ts=2 sts=2
+autocmd BufEnter *.tsx set filetype=typescript
+autocmd BufEnter *.ts set filetype=typescript
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " Wrapping
 " Break at words
@@ -199,6 +212,9 @@ let g:sexp_enable_insert_mode_mappings = 0
 "                                            ^ loltypo :-)
 iabbrev improt import
 iabbrev fmor from
+iabbrev fomr from
+iabbrev stirng string
+iabbrev undeifned undefined
 
 " Cross-vims copy/paste
 " copy to buffer

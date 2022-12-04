@@ -6,7 +6,10 @@ https://github.com/tpope/vim-fugitive.git
 https://github.com/Glench/Vim-Jinja2-Syntax.git
 https://github.com/plasticboy/vim-markdown.git
 https://github.com/jmcomets/vim-pony.git
-https://github.com/nablaa/vim-rainbow-parenthesis.git
+
+# https://github.com/nablaa/vim-rainbow-parenthesis.git
+https://github.com/luochen1990/rainbow
+
 https://github.com/dgrnbrg/vim-redl.git
 https://github.com/tpope/vim-repeat.git
 https://github.com/guns/vim-sexp.git
@@ -31,3 +34,11 @@ https://github.com/derekwyatt/vim-scala
 https://github.com/tpope/vim-abolish.git
 https://github.com/Quramy/tsuquyomi
 https://github.com/leafgarland/typescript-vim
+https://github.com/prettier/vim-prettier.git
+https://github.com/dense-analysis/ale
+https://github.com/rking/ag.vim
+https://github.com/tpope/vim-rhubarb
+https://github.com/MaxMEllon/vim-jsx-pretty
+https://github.com/peitalin/vim-jsx-typescript
+https://github.com/luchermitte/vim-refactor
+https://github.com/tpope/vim-cucumber

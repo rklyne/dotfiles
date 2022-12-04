@@ -8,16 +8,30 @@ alias ....="cd ../../.."
 alias ...="cd ../.."
 alias ..="cd .."
 
+alias nom="npm"
+
 alias gs='git status'
 alias gd='git diff'
-alias gca='git comit -av'
+alias gca='git commit -av'
 alias gc='git commit -v'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gco='git checkout'
-alias gcom='git checkout master'
+alias gcom='git checkout master || git checkout main'
 alias gcod='git checkout develop'
 alias gcob='git checkout -b'
 alias gcamend='git commit --amend -m'
 alias gpcb='git push -u origin `git branch | grep "*" | cut -b3-`'
+
+function gwip {
+        git add -A; git commit -m "🟢🟢🟢🟢 GREEN - $1 - to squash";
+};
+
+function rwip {
+        git add -A; git commit -m "🔴🔴🔴🔴 RED - $1 - to squash";
+};
+
+function fwip {
+        git add -A; git commit -m "👍👍👍👍 REFACTOR - $1 - to squash";
+};
 

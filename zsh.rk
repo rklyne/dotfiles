@@ -29,11 +29,18 @@ function git_stash_info {
         echo " [${STASH_COUNT} stashed]"
     fi
 }
-
-export PS1="[$(whoami)@$(hostname -s|cut -c 1-18)] %{$fg_bold[blue]%}\$(git_prompt_info)\$(git_stash_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c % ${ret_status} %{$reset_color%}"
+NEWLINE=$'\n'
+export PS1="[$(whoami)@$(hostname -s|cut -c 1-18)] %{$fg_bold[blue]%}\$(git_prompt_info)\$(git_stash_info)%{$fg_bold[blue]%}%{$fg_bold[green]%}%p %{$fg[cyan]%}%3c ${NEWLINE}>% ${ret_status} %{$reset_color%}"
 
 DOCKER_SCRIPT=/Users/rk/scripts/dockerinit.sh
 [[ -r ${DOCKER_SCRIPT} ]] && . ${DOCKER_SCRIPT}
+
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/dev/adr-tools/src"
+
+
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 . ~/.aliases
 
