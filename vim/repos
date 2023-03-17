@@ -43,7 +43,7 @@ https://github.com/w0rp/ale.git
 https://github.com/editorconfig/editorconfig-vim
 git@github.com:leafgarland/typescript-vim.git
 git@github.com:clausreinke/typescript-tools.vim.git
-git@github.com:Valloric/YouCompleteMe.git
+# git@github.com:Valloric/YouCompleteMe.git
 git@github.com:airblade/vim-gitgutter.git
 https://github.com/ludovicchabant/vim-gutentags.git
 https://github.com/sheerun/vim-polyglot
@@ -55,3 +55,7 @@ https://github.com/pangloss/vim-javascript
 https://github.com/maxmellon/vim-jsx-pretty
 https://github.com/jparise/vim-graphql
 https://github.com/aklt/plantuml-syntax
+
+https://github.com/rust-lang/rust.vim
+https://github.com/prabirshrestha/vim-lsp
+https://github.com/mattn/vim-lsp-settings
