@@ -1,13 +1,17 @@
 #!/bin/bash
 
-WD=$( cd $(dirname $0) ; pwd -P ) 
+WD=$(
+  cd $(dirname $0)
+  pwd -P
+)
 
-makelink () {
-    TARGET="${HOME}/.${1}"
-    if [[ -f "${TARGET}" && ! -L "${TARGET}" ]] ; then
-        mv "${TARGET}" "${TARGET}.original" ;
-    fi 
-    [[ -e "${TARGET}" ]] || ln -s "${WD}/${1}" "${TARGET}"
+makelink() {
+  PARENT="${2:-${HOME}}"
+  TARGET="${PARENT}/.${1}"
+  if [[ -f "${TARGET}" && ! -L "${TARGET}" ]]; then
+    mv "${TARGET}" "${TARGET}.original"
+  fi
+  [[ -e "${TARGET}" ]] || ln -s "${WD}/${1}" "${TARGET}"
 }
 
 # oh my zsh
@@ -19,6 +23,7 @@ makelink "vimrc"
 makelink "gitconfig"
 makelink "zsh.rk"
 makelink "aliases"
+makelink "nvim" "${HOME}/.config/"
 # ln -s "${WD}/tmux.conf" ~/.tmux.conf
 # ln -s "${WD}/vimrc" ~/.vimrc
 # ln -s "${WD}/vim" ~/.vim
@@ -30,5 +35,3 @@ pip install --user git+git://github.com/Lokaltog/powerline
 
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-
