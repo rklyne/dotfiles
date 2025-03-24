@@ -1,6 +1,7 @@
 [user]
-	email = ronan.klyne@cazoo.co.uk
-    name = Ronan Klyne
+	email = rk-github-public@rklyne.net
+	name = Ronan Klyne
+	signingkey = 75FFF4F792962172
 
 
 [core]
@@ -25,3 +26,5 @@
 	ff = only
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
