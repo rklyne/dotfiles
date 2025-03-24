@@ -21,6 +21,9 @@ try
 catch
 endtry
 
+packadd lsp
+packadd poet-v
+
 """"""""""""""""""""""
 " Fix distro defaults
 augroup redhat
@@ -105,44 +108,109 @@ set completeopt-=preview
 """""""""""""""""""""""""""""""""
 " LSP support for completion.
 
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
+" if executable('pylsp')
+"     " pip install python-lsp-server
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pylsp',
+"         \ 'cmd': {server_info->['pylsp']},
+"         \ 'allowlist': ['python'],
+"         \ })
+" endif
+" 
+" function! s:on_lsp_buffer_enabled() abort
+"     setlocal omnifunc=lsp#complete
+"     setlocal signcolumn=yes
+"     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"     nmap <buffer> gd <plug>(lsp-definition)
+"     nmap <buffer> gs <plug>(lsp-document-symbol-search)
+"     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+"     nmap <buffer> gr <plug>(lsp-references)
+"     nmap <buffer> gi <plug>(lsp-implementation)
+"     nmap <buffer> gt <plug>(lsp-type-definition)
+"     nmap <buffer> <leader>rn <plug>(lsp-rename)
+"     nmap <buffer> <leader>q <plug>(lsp-code-action)
+"     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+"     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+"     nmap <buffer> [r <plug>(lsp-previous-reference)
+"     nmap <buffer> ]r <plug>(lsp-next-reference)
+"     nmap <buffer> K <plug>(lsp-hover)
+"     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+"     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+" 
+"     let g:lsp_format_sync_timeout = 1000
+"     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+"     
+"     " refer to doc to add more commands
+" endfunction
+" 
+" augroup lsp_install
+"     au!
+"     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+" augroup END
 
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>q <plug>(lsp-code-action)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+" Newer LSP:
+" https://github.com/yegappan/lsp
+"
+" Servers on wiki: https://github.com/yegappan/lsp/wiki
 
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
-    " refer to doc to add more commands
-endfunction
 
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+" Bash
+call LspAddServer([#{name: 'bashls', 
+                 \   filetype: 'sh',
+                 \   path: '/snap/bin/bash-language-server',
+                 \   args: ['start']
+                 \ }])
+
+call LspAddServer([#{name: 'pylsp',
+                 \   filetype: 'python',
+                 \   path: '/usr/bin/pylsp',
+                 \   args: []
+                 \ }])
+
+" call LspAddServer([#{name: 'pyright',
+"                  \   filetype: 'python',
+"                  \   path: '/usr/local/bin/pyright-langserver',
+"                  \   args: ['--stdio'],
+"                  \   workspaceConfig: #{
+"                  \     python: #{
+"                  \       pythonPath: '/usr/bin/python3.11'
+"                  \   }}
+"                  \ }])
+
+call LspAddServer([#{name: 'rustanalyzer',
+                 \   filetype: ['rust'],
+                 \   path: '/home/rk/.cargo/bin/rust-analyzer',
+                 \   args: [],
+                 \   syncInit: v:true
+                 \ }])
+
+" call LspAddServer([#{name: 'tsserver',
+"                  \   filetype: ['javascript', 'typescript'],
+"                  \   path: '/home/rk/.nvm/versions/node/v16.20.2/bin/typescript-language-server',
+"                  \   args: ['stdio']
+"                  \ }])
+
+
+" Javascript/Typescript language server
+" 	\    path: '/usr/local/bin/typescript-language-server',
+call LspAddServer([#{
+	\    name: 'typescriptlang',
+	\    filetype: ['javascript', 'typescript'],
+	\    path: '/home/rk/.nvm/versions/node/v16.20.2/bin/typescript-language-server',
+	\    args: ['--stdio'],
+	\  }])
+
+nmap K :LspHover<enter>
+nmap gr :LspPeekReferences<enter>
+nmap gD :LspGotoDeclaration<enter>
+nmap gd :LspGotoDefinition<enter>
+nmap gi :LspGotoImpl<enter>
+nmap gt :LspGotoTypeDef<enter>
+nmap <leader>t :LspPeekTypeDef<enter>
+nmap <leader>p :LspFormat<enter>
+nmap <leader>rn :LspRename<enter>
+nmap <leader>q :LspCodeAction<enter>
 
 """""""""""""""""""""""""""""""""
 " Little informational bits
@@ -200,7 +268,7 @@ set expandtab
 autocmd FileType javascript,typescript set sw=2 ts=2 sts=2
 autocmd BufEnter *.tsx set filetype=typescript
 autocmd BufEnter *.ts set filetype=typescript
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " Wrapping
 " Break at words
@@ -316,7 +384,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Completion for Python
 
 autocmd FileType python setlocal completeopt-=preview
-let g:jedi#completions_command = "<C-/>"
+" let g:jedi#completions_command = "<C-/>"
 
 """""""""""""""""""""
 " completion for other stuff
