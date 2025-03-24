@@ -1,6 +1,6 @@
 # When htop available, use it by default
 [[ -x `which htop` ]] && alias top="htop "
-alias ls='ls -G --color'
+alias ls='ls --color'
 alias ll='ls -l --color'
 alias grpe='grep'
 alias .....="cd ../../../.."
@@ -23,6 +23,7 @@ alias gcoi='git checkout integration'
 alias gcob='git checkout -b'
 alias gcamend='git commit --amend -m'
 alias gpcb='git push -u origin `git branch | grep "*" | cut -b3-`'
+alias grsod='git fetch && git rebase --autostash origin/develop'
 
 function gwip {
         git add -A; git commit -m "🟢🟢🟢🟢 GREEN - $1 - to squash";
@@ -37,5 +38,29 @@ function fwip {
 };
 
 alias mkdir='mkdir -p'
+function mcdir {
+    mkdir "$@"
+    chdir "$@"
+}
 
 alias zoom="open_command https://zoom.us/start/videomeeting"
+
+alias ssh-no-keys='ssh -o pubkeyauthentication=no'
+
+function kube-read-secret () {
+    SECRET="$1"
+    NS="${2:-test}"
+    kubectl -n "${NS}" get secret ${SECRET} -o  json | jq '.data | map_values(@base64d)'
+
+}
+
+function gfix () {
+    fixup=$(git log --oneline origin/develop.. | fzf | cut -d" " -f1)
+    git commit --fixup "${fixup}"
+}
+alias gfixapply='git rebase -i --autosquash --autostash origin/develop'
+
+
+alias local_pants='IMAGE_TAG=0.1.0 PANTS_CONFIG_FILES=pants.local.toml pants '
+
+alias print_msgpack="python -c \"__import__('pprint').pprint(__import__('msgpack').unpackb(__import__('sys').stdin.read()))\""
