@@ -37,6 +37,8 @@ function fwip {
         git add -A; git commit -m "👍👍👍👍 REFACTOR - $1 - to squash";
 };
 
+alias vi='nvim'
+
 alias mkdir='mkdir -p'
 function mcdir {
     mkdir "$@"
