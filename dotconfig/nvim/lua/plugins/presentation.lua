@@ -21,16 +21,20 @@ return {
       vim.cmd([[ colorscheme NeoSolarized ]])
     end,
   },
-  { "brenoprata10/nvim-highlight-colors" },
+  -- { "brenoprata10/nvim-highlight-colors" },
   --- lets me tag words that I want highlighted
   {
     "Mr-LLLLL/interestingwords.nvim",
+    enabled = false,
+    config = true,
+    commit = "afe7dd8977c6dd258b25dcadeb8bff76e1e41b2d",
     opts = {
       colors = { "#aeee00", "#ff0000", "#0000ff", "#b88823", "#ffa724", "#ff2c4b" },
       search_key = "\\m",
       cancel_search_key = "\\M",
       color_key = "\\k",
       cancel_color_key = "\\K",
+      select_mode = "loop",
     },
   },
   --  this one was written for vim. The aboe is a **fork** of it.
@@ -42,4 +46,13 @@ return {
   --     vim.keymap.set("n", "\\K", "<CMD> UncolorAllWords()<CR>", { desc = "Remove all bespoke word highlights" })
   --   end,
   -- },
+  {
+    "dwrdx/mywords.nvim",
+    keys = {
+        {"\\h", "", desc = "Highlight words"},
+        {"\\hw", function () require('mywords').hl_toggle() end, desc = "Highlight all instances of this word"},
+        {"\\hr", function () require('mywords').hl_toggle_regex() end, desc = "Highlight all instances of this regex"},
+        {"\\hc", function () require('mywords').uhl_all() end, desc = "Clear all highlights"},
+    },
+  },
 }
